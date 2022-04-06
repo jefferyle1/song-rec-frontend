@@ -1,63 +1,71 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { search } from './utils';
 import Movies from './Movies';
+import { useState } from 'react';
+import axios from 'axios';
+import {DebounceInput} from 'react-debounce-input';
 
-class App extends Component {
-  state = {
-    movies: null,
-    loading: false,
-    value: ''
-  };
+function App () { 
+  const [movies, setMovies] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState('');
 
-  search = async val => {
+  const songSearch = async (val) => { 
+    setLoading(true);
+
+    const res = await search(val);
     
-    this.setState({ loading: true });
-
-    const res = await search(
-      `https://api.themoviedb.org/3/search/movie?query=${val}&api_key=dbc0a6d62448554c27b6167ef7dabb1b`
-    );
     const movies = res;
 
-    this.setState({movies: movies})
-    this.setState({loading: false });
+    setMovies(movies);
+    setLoading(false);
+
+};
+
+  const changeHandler = async (event) => { 
+    songSearch(event.target.value);
+    setValue(event.target.value)
   };
 
-  
-  onChangeHandler = async event => {
-    // calls search function using value in search bar
-    this.search(event.target.value);
-    // updates search bar text with user input
-    this.setState({ value: event.target.value });
-  };
-
-
-  get renderMovies() {
-
-    let movies = <h1>There's no movies</h1>;
+  function RenderMovies() { 
+    let moviesComp = <h1>There's no movies</h1>;
     
-    if (this.state.movies != null) {
-      movies = <Movies list={this.state.movies} />;
+    if (movies != null) {
+      moviesComp = <Movies list={movies} />;
     } 
     
-    return movies;
+    return moviesComp;
   }
 
-  render() {
-    return (
-      <div>
-        
-        <input
-          value={this.state.value}
-          onChange={event => this.onChangeHandler(event)}
-          placeholder="Type something to search"
-        />
-        
-        {this.renderMovies}
+  const manageAccessToken = async () => { 
+    if (localStorage.getItem("accessToken") == null) {
+      const res = await axios.get("http://127.0.0.1:5000/auth");
+
+      localStorage.setItem("accessToken", res.data);
+      console.log(res.data);
+    }
 
 
-      </div>
-    );
-  }
+  }; 
+  useEffect(() => {
+    manageAccessToken();
+  
+ 
+  });
+
+  return ( 
+    <div>        
+        <DebounceInput
+          value={value}
+          onChange={event => changeHandler(event)}
+          debounceTimeout={500}
+          placeholder="Type something to search"/>
+        
+        <RenderMovies />
+
+    </div>
+
+  );
 }
 
 export default App;

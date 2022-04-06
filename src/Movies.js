@@ -5,7 +5,7 @@ const Movies = ({ list }) => {
   let cards = <h3>Loading...</h3>;
 
   if (list) {
-    cards = list.slice(0,5).map((m, i) => <Movie key={i} item={m} />);
+    cards = list.map((m, i) => <Movie key={i} item={m} />);
   }
 
   console.log(list);
@@ -19,10 +19,11 @@ const Movies = ({ list }) => {
 
 
 const Movie = props => {
-    const { title, poster_path, vote_average } = props.item;
+    const { name, album, artists } = props.item;
+
   
     return (
-      <div> {title} </div>
+      <div> {name} by {artists[0]["name"]} </div>
     );
   };
 
