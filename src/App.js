@@ -1,71 +1,38 @@
-import React, { Component, useEffect } from 'react';
-import { search } from './utils';
-import Movies from './Movies';
-import { useState } from 'react';
-import axios from 'axios';
-import {DebounceInput} from 'react-debounce-input';
+import React from 'react';
+import { Routes, Route, useLocation } from "react-router-dom";
+import SearchPage from './SearchPage/SearchPage';
+import AddRecPage from './AddRecPage/AddRecPage';
+import { BrowserRouter} from "react-router-dom";
+import NavBar from './NavBar';
+import styled from 'styled-components';
+import { AnimatePresence } from 'framer-motion';
 
-function App () { 
-  const [movies, setMovies] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [value, setValue] = useState('');
-
-  const songSearch = async (val) => { 
-    setLoading(true);
-
-    const res = await search(val);
-    
-    const movies = res;
-
-    setMovies(movies);
-    setLoading(false);
-
-};
-
-  const changeHandler = async (event) => { 
-    songSearch(event.target.value);
-    setValue(event.target.value)
-  };
-
-  function RenderMovies() { 
-    let moviesComp = <h1>There's no movies</h1>;
-    
-    if (movies != null) {
-      moviesComp = <Movies list={movies} />;
-    } 
-    
-    return moviesComp;
-  }
-
-  const manageAccessToken = async () => { 
-    if (localStorage.getItem("accessToken") == null) {
-      const res = await axios.get("http://127.0.0.1:5000/auth");
-
-      localStorage.setItem("accessToken", res.data);
-      console.log(res.data);
-    }
+function App() {
 
 
-  }; 
-  useEffect(() => {
-    manageAccessToken();
-  
- 
-  });
+  return (
+    <BrowserRouter>
 
-  return ( 
-    <div>        
-        <DebounceInput
-          value={value}
-          onChange={event => changeHandler(event)}
-          debounceTimeout={500}
-          placeholder="Type something to search"/>
-        
-        <RenderMovies />
+      <Routes >
 
-    </div>
+        <Route path="/" exact={true} element={<Base> <NavBar/> <SearchPage /> </Base>} />
 
+        <Route path="addrec/:type/:song" element={<Base> <NavBar/>  <AddRecPage /> </Base>} />
+
+        <Route path="*" exact={true} element={ <h2> Sorry, this page doesn't exist!</h2>} />
+
+        </Routes>
+      </BrowserRouter>
   );
 }
 
 export default App;
+
+
+const Base = styled.div`
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Trebuchet MS";
+    background-color: #d87e09;
+`

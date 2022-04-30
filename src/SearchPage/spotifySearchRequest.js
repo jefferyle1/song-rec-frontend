@@ -1,11 +1,15 @@
 import axios from 'axios';
 
-const prevResults = {};
+const prevResults = {
+  "track": {}, 
+  "album": {},
+  "artist": {}
+};
 
-const makeRequestCreator = () => {
+const spotifySearchRequest = () => {
   let cancel;
 
-  return async query => {
+  return async (query, searchType) => {
     if (cancel) {
       // Cancel the previous request before making a new request
       cancel.cancel();
@@ -13,9 +17,19 @@ const makeRequestCreator = () => {
     // Create a new CancelToken
     cancel = axios.CancelToken.source();
 
+  
+    let searchLimit; 
+    if (searchType == "track") { 
+      searchLimit = 5;  
+    } else if (searchType == "album") {
+      searchLimit = 10; 
+    }  else { 
+      searchLimit = 3;
+    }
+
     const searchOptions = {
       method: 'GET',
-      url: `https://api.spotify.com/v1/search?q=${query}&type=track&limit=7`,
+      url: `https://api.spotify.com/v1/search?q=${query}&type=${searchType}&limit=${searchLimit}`,
       headers: {
           'Authorization': `Bearer ${localStorage.getItem("accessToken")}`,
           "Accept": "application/json",
@@ -26,15 +40,23 @@ const makeRequestCreator = () => {
     try {
 
       // if query has already been done, don't make request use the data that's stored
-      if (prevResults[query]) {
-        return prevResults[query]; 
+      if (prevResults[searchType][query]) {
+        return prevResults[searchType][query]; 
       }
 
       // request is made
-      const requestSongs = await axios(searchOptions, { cancelToken: cancel.token });
+      const requestResults = await axios(searchOptions, { cancelToken: cancel.token });
 
-      const data = requestSongs.data["tracks"]["items"];
-      prevResults[query] = data;
+      let data;
+      if (searchType == "track") { 
+        data = requestResults.data["tracks"]["items"];
+      } else if (searchType == "album") { 
+        data = requestResults.data["albums"]["items"];
+      } else if (searchType == "artist") { 
+        data = requestResults.data["artists"]["items"];
+      }
+
+      prevResults[searchType][query] = data;
       return data;
 
 
@@ -46,7 +68,7 @@ const makeRequestCreator = () => {
         // Handle usual errors
 
         if (error.message.includes("401")) { 
-          const requestAccessToken = await axios.get("http://127.0.0.1:5000/auth");
+          const requestAccessToken = await axios.get("http://127.0.0.1:5000/spotifyAuth");
           localStorage.setItem("accessToken", requestAccessToken.data);
           searchOptions.headers["Authorization"] = `Bearer ${localStorage.getItem("accessToken")}`;
 
@@ -64,4 +86,4 @@ const makeRequestCreator = () => {
   };
 };
 
-export const search = makeRequestCreator()
+export default spotifySearchRequest();
