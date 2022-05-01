@@ -13,9 +13,10 @@ export default function SearchResults(props) {
       <Border > 
           <Left> Sound Recommendations </Left>
           <Right>  
-            <NavLink to={`/`} whileHover={{ scale: 1.1 }}> <b>Recommend </b> </NavLink>
-            <NavLink to={`/`} whileHover={{ scale: 1.1 }}> <b>Recent </b> Recommendations </NavLink>
-            <NavLink to={`/`} whileHover={{ scale: 1.1 }}> <b>View all </b>  Recommendations </NavLink>
+            <NavLink to={`/viewrecs`} whileHover={{ scale: 1.1 }}> <b>View </b>  Recommendations </NavLink>
+            <NavLink to={`/search`} whileHover={{ scale: 1.1 }}> <b> Make Recommendation </b> </NavLink>
+            <NavLink to={`/`} whileHover={{ scale: 1.1 }}> Your Account </NavLink>
+            
           </Right>
 
       </Border>

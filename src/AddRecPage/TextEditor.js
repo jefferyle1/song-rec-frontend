@@ -10,14 +10,16 @@ export default function TextEditor({data, resultType}) {
   const [contentValue, setContentValue] = useState('');
   const [disabled, setDisabled] = useState(false);
 
-  let maxChars;
+
+  let maxContentChars;
+  let maxHeadlineChars = 40;
   
   if (resultType == "Song") { 
-    maxChars = 280;
+    maxContentChars = 280;
   } else if (resultType == "Album") { 
-    maxChars = 280;
+    maxContentChars = 300;
   } else if (resultType == "Artist") {
-    maxChars = 280; 
+    maxContentChars = 320; 
   }
   const changeHandlerHeadline = async (event) => {
     setHeadlineValue(event.target.value)
@@ -27,8 +29,8 @@ export default function TextEditor({data, resultType}) {
     setContentValue(event.target.value)
   };
 
-  let titleCharsLeft = 25 - headlineValue.length;
-  let contentCharsLeft = maxChars - contentValue.length; 
+  let titleCharsLeft = maxHeadlineChars - headlineValue.length;
+  let contentCharsLeft = maxContentChars - contentValue.length; 
 
   const onSubmit = async () => {
 
@@ -61,10 +63,10 @@ export default function TextEditor({data, resultType}) {
 
               <HeadLine
               value={headlineValue}
-              maxLength={25}
+              maxLength={maxHeadlineChars}
               onKeyPress={e => {if (e.key === 'Enter') e.preventDefault() }}
               onChange={event => changeHandlerHeadline(event)}
-              placeholder={"Briefly describe this " + resultType.toLowerCase() + "..."} />
+              placeholder={"Describe this " + resultType.toLowerCase() + " with one phrase..."} />
 
               <TextBox 
               value={contentValue}
@@ -112,12 +114,11 @@ const TextBoxBorder = styled(motion.div)`
 `
 const HeadLine = styled.input` 
   width: 550px;
-  font-size: 18px;
   text-align: left;
   padding: 10px;
-  font-size: 20px;
+  font-size: 25px;
   background-color: white;
-  height: 30px;
+  height: 45px;
   border: 0px;
   resize: none;
   &:focus {
@@ -139,7 +140,7 @@ const Bottom = styled.div`
   border: 1px solid black;
 `
 const TextBox = styled(TextareaAutosize)` 
-font-size: 18px;
+  font-size: 22px;
   width: 550px;
   font-family: "Trebuchet MS";
   text-align: left;
