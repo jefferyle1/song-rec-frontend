@@ -7,9 +7,14 @@ import { BrowserRouter} from "react-router-dom";
 import NavBar from './NavBar';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
+import AccountPage from './AccountPage/AccountPage';
+import ThankRecPage from './MiscPages/ThankRec';
+import AboutPage from './MiscPages/About';
 
 function App() {
 
+  const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
+  console.log(clientId)
 
   return (
     <BrowserRouter>
@@ -21,7 +26,13 @@ function App() {
 
         <Route path="/addrec/:type/:song" element={<Base> <NavBar/>  <AddRecPage /> </Base>} />
 
-        <Route path="viewrecs" element={<Base> <NavBar/> <ViewRecsPage/>  </Base>} />
+        <Route path="/viewrecs" element={<Base> <NavBar/> <ViewRecsPage/>  </Base>} />
+
+        <Route path="/youraccount" element={<Base> <NavBar/> <AccountPage/>  </Base>} />
+        
+        <Route path="/thankrec" element={<Base> <NavBar/> <ThankRecPage/>  </Base>} />
+        
+        <Route path="/about" element={<Base> <NavBar/> <AboutPage/>  </Base>} />
 
         <Route path="*" exact={true} element={ <h2> Sorry, this page doesn't exist!</h2>} />
 
@@ -35,8 +46,9 @@ export default App;
 
 const Base = styled.div`
     min-height: 100vh;
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     font-family: "Trebuchet MS";
-    background-color: #d87e09;
+    
 `

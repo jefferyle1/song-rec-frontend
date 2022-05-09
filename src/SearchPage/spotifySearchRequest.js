@@ -72,10 +72,17 @@ const spotifySearchRequest = () => {
           localStorage.setItem("accessToken", requestAccessToken.data);
           searchOptions.headers["Authorization"] = `Bearer ${localStorage.getItem("accessToken")}`;
 
-          let requestSongs = await axios(searchOptions, { cancelToken: cancel.token });
+          const requestResults = await axios(searchOptions, { cancelToken: cancel.token });
 
-          const data = requestSongs.data["tracks"]["items"];
-          prevResults[query] = data;
+          let data;
+          if (searchType == "track") { 
+            data = requestResults.data["tracks"]["items"];
+          } else if (searchType == "album") { 
+            data = requestResults.data["albums"]["items"];
+          } else if (searchType == "artist") { 
+            data = requestResults.data["artists"]["items"];
+          }
+          prevResults[searchType][query] = data;
           return data;
         }
         

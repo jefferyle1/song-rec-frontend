@@ -15,7 +15,6 @@ function SearchPage () {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState('');
-  const [prevVal, setPrevVal] = useState('');
   
   const [selectedOption, setSelectedOption] = useState("Song");
   

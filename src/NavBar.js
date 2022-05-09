@@ -11,11 +11,11 @@ export default function SearchResults(props) {
 
     return ( 
       <Border > 
-          <Left> Sound Recommendations </Left>
+          <NavLink to={`/about`} whileHover={{ scale: 1.1 }}> <Left>  Sound Recommendations  </Left> </NavLink> 
           <Right>  
-            <NavLink to={`/viewrecs`} whileHover={{ scale: 1.1 }}> <b>View </b>  Recommendations </NavLink>
-            <NavLink to={`/search`} whileHover={{ scale: 1.1 }}> <b> Make Recommendation </b> </NavLink>
-            <NavLink to={`/`} whileHover={{ scale: 1.1 }}> Your Account </NavLink>
+            <NavLink to={`/viewrecs`} whileHover={{ scale: 1.1 }}> View   Recommendations </NavLink>
+            <NavLink to={`/search`} whileHover={{ scale: 1.1 }}>  Make Recommendation  </NavLink>
+            <NavLink to={`/youraccount`} whileHover={{ scale: 1.1 }}> Your Account </NavLink>
             
           </Right>
 
@@ -27,24 +27,32 @@ export default function SearchResults(props) {
 const Border = styled(motion.div)`
     display: flex; 
     flex-direction: row;
-    flex-shrink: 0;
     align-items: center;
-
+    z-index: 9999; 
     border-bottom: 2px solid black;
     box-shadow: 0px 0px 10px 1px black;
     height: 100px;
     justify-content: space-between;
     background-color: white;
-    position: sticky; top: 0;
+    position: sticky;
+    top: 0;
 `
 const Left = styled.div` 
+    display: flex;
+    align-items: center;
     padding-left: 40px;
     font-size: 35px;
     font-weight: bold;
+    height: 100px;
 `
 
 const Right = styled.div` 
+    display: flex;
+    align-items: center;
     display: flex; 
+    background-color: white;
+    height: 100px;
+    box-shadow: 20px 0px 10px 1px black;
 `
 
 const NavLink = styled(MotionLink)` 
@@ -53,6 +61,10 @@ const NavLink = styled(MotionLink)`
     text-decoration: none;
     color: inherit;
     font-size: 20px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     padding: 15px 15px 15px 15px;
     border-radius: 15px;
