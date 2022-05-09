@@ -10,6 +10,7 @@ import { AnimatePresence } from 'framer-motion';
 import AccountPage from './AccountPage/AccountPage';
 import ThankRecPage from './MiscPages/ThankRec';
 import AboutPage from './MiscPages/About';
+import ErrorPage from './MiscPages/Error';
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
         
         <Route path="/about" element={<Base> <NavBar/> <AboutPage/>  </Base>} />
 
-        <Route path="*" exact={true} element={ <h2> Sorry, this page doesn't exist!</h2>} />
+        <Route path="*" exact={true} element={ <Base> <NavBar/> <ErrorPage/>  </Base>} />
 
         </Routes>
       </BrowserRouter>

@@ -70,7 +70,7 @@ export default function TextEditor({data, resultType}) {
           <Border initial={{scaleX: 0}} animate={{scaleX: 1}} transition={{ duration: 1}} >
 
               {isAuthenticated ? 
-                <TextBoxBorder initial={{opacity: 0}} animate={{opacity: 1}} transition={{ duration: 1, delay: .5}}>
+                <TextBoxBorder initial={{opacity: 0}} animate={{opacity: 1}} transition={{ duration: 1, delay: 1.5}}>
                 <HeadLine
                   value={headlineValue}
                   maxLength={maxHeadlineChars}

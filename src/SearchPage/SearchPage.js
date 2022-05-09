@@ -15,6 +15,8 @@ function SearchPage () {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState('');
+  const introStr = "Got a song that's stuck in your head? An album you're playing on repeat? A great artist you just discovered? \n Search for them below and make a recommendation!"
+  const [introText, setIntroText] = useState(introStr)
   
   const [selectedOption, setSelectedOption] = useState("Song");
   
@@ -40,6 +42,7 @@ function SearchPage () {
     if (event.target.value != "") { 
       songSearch(event.target.value);
       setJustify("flex-start");
+      setIntroText();
     } else { 
       setResults(null);
       setLoading(false);
@@ -83,6 +86,7 @@ function SearchPage () {
     <Page theme={theme}>
        
         <MotionDiv layout>
+        <IntroText> {introText} </IntroText>
         <TypeSelect selectedOption={selectedOption} setSelectedOption={setSelectedOption} setValue={setValue} setResults={setResults}/>
         <SearchBar >
           <Search
@@ -113,8 +117,18 @@ const Page = styled.div`
   flex-grow: 4;
 `
 const MotionDiv = styled(motion.div)`
-  box-shadow: 5px 5px 5px black;
   margin-top: 20px;
+`
+
+const IntroText = styled.div`
+  width: 540px;
+  font-size: 19px;
+  white-space:pre-wrap;
+  text-align: center;
+  line-height: 1.6;
+  border: 1px solid black;
+  background-color: white;
+
 `
 
 const SearchBar = styled(motion.div)`
