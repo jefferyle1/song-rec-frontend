@@ -51,7 +51,7 @@ function SearchPage () {
 
   const manageAccessToken = async () => { 
     if (localStorage.getItem("accessToken") == null) {
-      const res = await axios.get("http://127.0.0.1:5000/spotifyAuth");
+      const res = await axios.get(process.env.REACT_APP_BACKEND + "/spotifyAuth");
       localStorage.setItem("accessToken", res.data);
     }
   };

@@ -43,7 +43,7 @@ export default function RecList( {data, setData, isLoading, setSelectedPost}) {
         } else { 
             return(
             <End> 
-                <div> End of Results </div>
+                <div> End of Results {console.log(process.env.REACT_APP_BACKEND)} </div>
                 <div > Not enough results to activate infinite scrolling? <Underline onClick={fetchMoreData}>Click here</Underline> to manually load more. </div>
             </End>);
         }
@@ -52,11 +52,12 @@ export default function RecList( {data, setData, isLoading, setSelectedPost}) {
 
     const fetchMoreData = () => { 
         setPageNum(pageNum + 1);
-        fetch(`http://127.0.0.1:5000/getRecs?page=${pageNum}`)
+        fetch(process.env.REACT_APP_BACKEND + `/getRecs?page=${pageNum}`)
         .then(response => response.json())
         .then(jsonData => {
             setData(data.concat(jsonData)); 
             setNumRec(numRec + jsonData.length);
+            
         }
           )
         .catch((error) => console.log(error));
@@ -64,7 +65,7 @@ export default function RecList( {data, setData, isLoading, setSelectedPost}) {
 
     useEffect(() => {
         
-      fetch("http://127.0.0.1:5000/getRecs")
+      fetch(process.env.REACT_APP_BACKEND + "/getRecs")
         .then(response => response.json())
         .then(jsonData => {
             

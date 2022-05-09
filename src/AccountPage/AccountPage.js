@@ -21,7 +21,7 @@ export default function AccountPage () {
       if (isAuthenticated) { 
 
       
-      fetch(`http://127.0.0.1:5000/getUserNumRecs?userID=${user.sub}`)
+      fetch(process.env.REACT_APP_BACKEND + `/getUserNumRecs?userID=${user.sub}`)
         .then(response => response.json())
         .then(jsonData => {
             setNumTotalPost(jsonData);

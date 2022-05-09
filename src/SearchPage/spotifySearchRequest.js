@@ -68,7 +68,7 @@ const spotifySearchRequest = () => {
         // Handle usual errors
 
         if (error.message.includes("401")) { 
-          const requestAccessToken = await axios.get("http://127.0.0.1:5000/spotifyAuth");
+          const requestAccessToken = await axios.get(process.env.REACT_APP_BACKEND + "/spotifyAuth");
           localStorage.setItem("accessToken", requestAccessToken.data);
           searchOptions.headers["Authorization"] = `Bearer ${localStorage.getItem("accessToken")}`;
 

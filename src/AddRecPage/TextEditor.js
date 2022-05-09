@@ -42,7 +42,7 @@ export default function TextEditor({data, resultType}) {
     data.postContent = contentValue;
     data.userID = user.sub;
     console.log(data);
-    const response = await fetch("http://127.0.0.1:5000/addRec", {
+    const response = await fetch(process.env.REACT_APP_BACKEND + "/addRec", {
     method: "POST",
     headers: {
     'Content-Type' : 'application/json'

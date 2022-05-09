@@ -13,8 +13,6 @@ import AboutPage from './MiscPages/About';
 
 function App() {
 
-  const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
-  console.log(clientId)
 
   return (
     <BrowserRouter>

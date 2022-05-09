@@ -7,7 +7,7 @@ import { Scrollbars } from 'react-custom-scrollbars-2';
 export default function SelectedRecPanel( {itemData, allData, setData, setSelectedPost}) {
 
     const handleClick = () => {
-        fetch(`http://127.0.0.1:5000/deleteRec?postID=${itemData["postID"]}`, { method: 'DELETE' })
+        fetch(process.env.REACT_APP_BACKEND + `/deleteRec?postID=${itemData["postID"]}`, { method: 'DELETE' })
         .then(() => {
             console.log("post deleted");
             allData = allData.filter(item => item["postID"] != itemData["postID"]);

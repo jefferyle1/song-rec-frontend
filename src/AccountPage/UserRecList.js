@@ -18,7 +18,7 @@ export default function RecList( {data, setData, isLoading, setSelectedPost, use
 
     const fetchMoreData = () => { 
         setPageNum(pageNum + 1);
-        fetch(`http://127.0.0.1:5000/getUserRecs?userID=${userID}&page=${pageNum}`)
+        fetch(process.env.REACT_APP_BACKEND + `/getUserRecs?userID=${userID}&page=${pageNum}`)
         .then(response => response.json())
         .then(jsonData => {
             setData(data.concat(jsonData)); 
@@ -30,7 +30,7 @@ export default function RecList( {data, setData, isLoading, setSelectedPost, use
 
     useEffect(() => {
         
-      fetch(`http://127.0.0.1:5000/getUserRecs?userID=${userID}`)
+      fetch(process.env.REACT_APP_BACKEND + `/getUserRecs?userID=${userID}`)
         .then(response => response.json())
         .then(jsonData => {
             
