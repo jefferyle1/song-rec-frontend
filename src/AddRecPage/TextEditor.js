@@ -41,7 +41,6 @@ export default function TextEditor({data, resultType}) {
     data.postHeadline = headlineValue; 
     data.postContent = contentValue;
     data.userID = user.sub;
-    console.log(data);
     const response = await fetch(process.env.REACT_APP_BACKEND + "/addRec", {
     method: "POST",
     headers: {

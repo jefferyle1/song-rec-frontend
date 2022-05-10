@@ -14,7 +14,7 @@ export default function AddRecPage () {
   const location = useLocation();
   
   if (!location.state) { 
-    return(<Error> Sorry, this is an invalid way to search for a recommendation, you must search for one! </Error>);
+    return(<Error> Sorry, you must search for your item directly from the search bar! </Error>);
   }
   
   const { data, resultType } = location.state;

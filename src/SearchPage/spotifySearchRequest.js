@@ -11,10 +11,10 @@ const spotifySearchRequest = () => {
 
   return async (query, searchType) => {
     if (cancel) {
-      // Cancel the previous request before making a new request
+      // cancels previous request before making a new one
       cancel.cancel();
     }
-    // Create a new CancelToken
+    // creates new CancelToken
     cancel = axios.CancelToken.source();
 
   
@@ -39,7 +39,7 @@ const spotifySearchRequest = () => {
 
     try {
 
-      // if query has already been done, don't make request use the data that's stored
+      // if query has already been done, don't make request, use the data that's stored
       if (prevResults[searchType][query]) {
         return prevResults[searchType][query]; 
       }

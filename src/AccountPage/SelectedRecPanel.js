@@ -9,7 +9,6 @@ export default function SelectedRecPanel( {itemData, allData, setData, setSelect
     const handleClick = () => {
         fetch(process.env.REACT_APP_BACKEND + `/deleteRec?postID=${itemData["postID"]}`, { method: 'DELETE' })
         .then(() => {
-            console.log("post deleted");
             allData = allData.filter(item => item["postID"] != itemData["postID"]);
             setData(allData);
             if (allData.length != 0) {

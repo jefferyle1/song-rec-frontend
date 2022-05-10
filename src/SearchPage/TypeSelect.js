@@ -16,7 +16,6 @@ export default function TypeSelect({selectedOption, setSelectedOption, setValue,
   
   };
   
- 
 
 useEffect(() => {
 if (selectedOption == "Song") { 

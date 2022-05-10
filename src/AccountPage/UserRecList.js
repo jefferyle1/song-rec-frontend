@@ -12,7 +12,6 @@ export default function RecList( {data, setData, isLoading, setSelectedPost, use
 
     const handleClick = (e, data) => {
         setSelectedPost(data); 
-        console.log(data);
     }
 
 
