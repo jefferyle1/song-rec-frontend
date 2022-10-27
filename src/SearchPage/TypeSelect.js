@@ -61,7 +61,7 @@ const OptionsBorder = styled.div`
 const CurrOption = styled(motion.div)`
   height: 4px;
   width: 180px;
-  background-color: #831c03;
+  background-color: #3A3B3C;
   align-self: ${props => props.theme.justify};
 `
 

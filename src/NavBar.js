@@ -11,7 +11,7 @@ export default function SearchResults(props) {
 
     return ( 
       <Border > 
-          <NavLink to={`/about`} whileHover={{ scale: 1.1 }}> <Left>  Sound Recommendations  </Left> </NavLink> 
+          <TitleNavLink to={`/about`} whileHover={{ scale: 1.1 }}> <Left>  Sound Recommendations  </Left> </TitleNavLink> 
           <Right>  
             <NavLink to={`/viewrecs`} whileHover={{ scale: 1.1 }}> View   Recommendations </NavLink>
             <NavLink to={`/search`} whileHover={{ scale: 1.1 }}>  Make Recommendation  </NavLink>
@@ -53,6 +53,33 @@ const Right = styled.div`
     background-color: white;
     height: 100px;
     box-shadow: 20px 0px 10px 1px black;
+`
+const TitleNavLink = styled(MotionLink)` 
+    margin-left: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 20px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 15px 15px 25px 15px;
+    border-radius: 15px;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 3px 3px 3px black;
+        text-decoration: none;
+    color: inherit;
+    }
+
+     &:hover {
+        cursor: pointer;
+        box-shadow: 3px 3px 3px black;
+        text-decoration: none;
+        color: inherit;
+    }
 `
 
 const NavLink = styled(MotionLink)` 

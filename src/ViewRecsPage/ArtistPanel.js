@@ -41,6 +41,7 @@ const InfoPanel = styled.div`
 
 const Image = styled.img` 
   margin-bottom: 10px;
+  margin-top: 10px;
   max-height: 450px; 
   max-width: 400px;
   width: 23vw;
