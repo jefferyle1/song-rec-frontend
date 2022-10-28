@@ -18,15 +18,13 @@ export default function TrackListPanel ({resultType, id, total_tracks}) {
     return (
       
         <Border initial={{scaleX: 0}} animate={{scaleX: 1}} transition={{ duration: 1}}> 
-          <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: .9}}>
             <embed loading="lazy" src={embedLink} width="350" height={height} data-mce-fragment="1"></embed>
-          </motion.div>
         </Border>
         
     );
 }
 
-const Border = styled(motion.div)`
+const Border = styled.div`
   display: flex;
   flex-direction: column;
   flex-shrink:0; 

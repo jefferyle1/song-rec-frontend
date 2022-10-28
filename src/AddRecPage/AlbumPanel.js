@@ -38,12 +38,12 @@ export default function AlbumPanel ({data, resultType}) {
 
 }
 
-const Border = styled(motion.div)` 
+const Border = styled.div` 
   display: flex;
   flex-direction: row;
 `
 
-const InfoPanel = styled(motion.div)` 
+const InfoPanel = styled.div` 
   display: flex;
   flex-direction: column;
   flex-shrink:0; 

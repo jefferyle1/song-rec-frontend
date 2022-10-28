@@ -52,7 +52,7 @@ export default function SongPanel ({data}) {
 
 }
 
-const Border = styled(motion.div)` 
+const Border = styled.div` 
   display: flex;
   flex-direction: column;
   flex-shrink:0; 

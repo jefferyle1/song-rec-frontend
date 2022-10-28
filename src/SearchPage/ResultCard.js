@@ -92,7 +92,7 @@ text-decoration: none;
     color: inherit;
 }
 `
-const Border = styled(motion.div)`
+const Border = styled.div`
     display: flex;
     flex-direction: row;
     width: 530px;

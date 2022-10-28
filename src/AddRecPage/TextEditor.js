@@ -110,7 +110,7 @@ export default function TextEditor({data, resultType}) {
 
 
 
-const Border = styled(motion.div)` 
+const Border = styled.div` 
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -121,7 +121,7 @@ const Border = styled(motion.div)`
   box-shadow: -6px 0px 5px black;
   font-family: "Trebuchet MS";
 `
-const TextBoxBorder = styled(motion.div)` 
+const TextBoxBorder = styled.div` 
   display: flex;
   align-items: end;
   flex-direction: column;
