@@ -80,7 +80,7 @@ const Sidebar = styled.div`
 
 const NumPosts = styled.div` 
   height: 70px; 
-  width: 300px;
+  width: 290px;
   border: 2px solid black;
   background-color: white;
   padding: 10px;
@@ -88,6 +88,7 @@ const NumPosts = styled.div`
   margin-top: 10px;
   text-align: center;
   font-size: 25px;
+  border-radius: 10px 10px 10px 10px;
 
 `
 

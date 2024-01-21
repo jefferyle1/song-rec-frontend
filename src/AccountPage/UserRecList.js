@@ -124,6 +124,7 @@ const RecBorder = styled.div`
         background-color: #F0F8FF;
         cursor: pointer;
     }
+    border-radius: 10px 10px 10px 10px;
 `
 const RecTop = styled.div` 
     display: flex;

@@ -37,6 +37,7 @@ const LogoutBorder = styled.div`
   margin-top: 10px;
   margin-left: 10px;
   padding: 5px;
+  border-radius: 10px 10px 10px 10px;
 `
 
 const LogoutMessage = styled.div` 

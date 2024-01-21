@@ -39,6 +39,7 @@ const Border = styled.div`
     flex-shrink: 0;
     margin-left: 25px;
     padding-right: 20px;
+    border-radius: 25px;
     
 `
 
@@ -62,6 +63,7 @@ const Headline = styled.div`
     margin-top: 10px;
     text-align: center;
     background-color: #f9f9f9;
+    border-radius: 10px 10px 0px 0px;
 `
 
 const Footer = styled.div`
@@ -73,5 +75,6 @@ const Footer = styled.div`
     border-top: 0px;
     text-align: center;
     background-color: #f9f9f9;
+    border-radius: 0px 0px 10px 10px;
 `
 

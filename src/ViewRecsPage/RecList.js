@@ -43,8 +43,7 @@ export default function RecList( {data, setData, isLoading, setSelectedPost}) {
         } else { 
             return(
             <End> 
-                <div> End of Results {console.log(process.env.REACT_APP_BACKEND)} </div>
-                <div > Not enough results to activate infinite scrolling? <Underline onClick={fetchMoreData}>Click here</Underline> to manually load more. </div>
+                <div> End of Results </div>
             </End>);
         }
     }
@@ -209,6 +208,7 @@ const RecBorder = styled.div`
         background-color: #F0F8FF;
         cursor: pointer;
     }
+    border-radius: 10px 10px 10px 10px;
 `
 const RecTop = styled.div` 
     display: flex;

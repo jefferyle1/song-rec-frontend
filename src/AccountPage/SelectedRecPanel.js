@@ -68,6 +68,7 @@ const Headline = styled.div`
     margin-top: 10px;
     text-align: center;
     background-color: #f9f9f9;
+    border-radius: 10px 10px 0px 0px;
 `
 
 const Footer = styled.div`
@@ -81,6 +82,7 @@ const Footer = styled.div`
     background-color: #f9f9f9;
     justify-content: space-between;
     align-items: flex-end;
+    border-radius: 0px 0px 10px 10px;
 `
 
 const DeleteButton = styled.button`
@@ -93,5 +95,6 @@ const DeleteButton = styled.button`
     &:hover {
         cursor: pointer;
     }
+    border-radius: 10px 10px 10px 10px;
 `
 

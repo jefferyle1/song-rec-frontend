@@ -24,6 +24,7 @@ const Info = styled.div`
   margin-top: 10px;
   text-align: center;
   font-size: 25px;
+  border-radius: 10px 10px 10px 10px;
 `
 
 const Page = styled.div`
