@@ -12,11 +12,9 @@ export default function SelectedRecPanel( {data}) {
     return ( 
         <Border> 
         <Scrollbars  autoHide hideTracksWhenNotNeeded >
-        
-            
-            <Headline> "{data["postHeadline"].toUpperCase()}" </Headline>
-            <Content> {data["postContent"]} </Content>
-            <Footer>  Posted {data["postDate"]} </Footer> 
+            <Headline> "{data["postHeadline"].toUpperCase().trim()}" </Headline>
+            <Content> {data["postContent"].trim()} </Content>
+            <Footer>  </Footer> 
             </Scrollbars>
         </Border>
         
@@ -25,8 +23,8 @@ export default function SelectedRecPanel( {data}) {
     } else { 
         return ( 
             <Border> 
-                <Headline> "{data["postHeadline"].toUpperCase()}" </Headline>
-                <Footer> Posted {data["postDate"]} </Footer> 
+                <Headline> "{data["postHeadline"].toUpperCase().trim()}" </Headline>
+                <Footer> </Footer> 
             </Border>
         
         );

@@ -29,7 +29,6 @@ export default function SelectedRecPanel( {itemData, allData, setData, setSelect
             <Content> {itemData["postContent"]} </Content>
                 
             <Footer> 
-                Posted {itemData["postDate"]}
                 <DeleteButton onClick={handleClick}> Delete Post  </DeleteButton>
             </Footer> 
         </Scrollbars>
