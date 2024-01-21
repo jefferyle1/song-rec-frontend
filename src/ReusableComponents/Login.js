@@ -22,6 +22,7 @@ const ButtonStyled = styled.button`
   &:hover:enabled {
     cursor: pointer;
   }
+  border-radius: 10px;
 `
 
 const LoginBorder = styled.div` 
@@ -33,6 +34,7 @@ const LoginBorder = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  border-radius: 10px;
 `
 
 const LoginMessage = styled.div` 

@@ -28,7 +28,7 @@ const Info = styled.div`
   background-color: white;
   padding: 10px;
   margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 100px;
   text-align: center;
   font-size: 25px;
   border-radius: 10px 10px 10px 10px;
